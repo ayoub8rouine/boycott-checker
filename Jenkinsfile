@@ -36,10 +36,12 @@ pipeline {
                         // Login to DockerHub
                         sh 'echo "${dockerhubpwd}" | docker login -u poldiro --password-stdin'
                         
-                        // Build image locally, tag for push, then push
+                        // Build image locally (no push for speed)
                         sh 'docker build -t consume-safe:${BUILD_NUMBER} .'
-                        sh 'docker tag consume-safe:${BUILD_NUMBER} poldiro/consume-safe:${BUILD_NUMBER}'
-                        sh 'docker push poldiro/consume-safe:${BUILD_NUMBER}'
+                        
+                        // Optional push (uncomment if needed)
+                        // sh 'docker tag consume-safe:${BUILD_NUMBER} poldiro/consume-safe:${BUILD_NUMBER}'
+                        // sh 'docker push poldiro/consume-safe:${BUILD_NUMBER}'
                     }
                 }
             }
@@ -49,7 +51,7 @@ pipeline {
             steps {
                 script {
                     // Replace image tag dynamically with current Jenkins build number
-                    sh "sed -i 's|consume-safe:.*|poldiro/consume-safe:${BUILD_NUMBER}|' k8s/deployment.yaml"
+                    sh "sed -i 's|consume-safe:.*|consume-safe:${BUILD_NUMBER}|' k8s/deployment.yaml"
                     
                     withKubeConfig(credentialsId: 'kube-configfile', serverUrl: 'https://kubernetes.docker.internal:6443') {
                         // Apply deployment and service
