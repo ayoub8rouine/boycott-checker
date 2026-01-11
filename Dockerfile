@@ -6,7 +6,7 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve with Nginx
+# Stage 2: Serve withh Nginx
 FROM nginx:alpine
 COPY --from=build /app/dist/consume-safe/browser /usr/share/nginx/html
 
