@@ -7,7 +7,7 @@ pipeline {
             steps {
                 git branch: 'master',
                     url: 'https://github.com/ayoub8rouine/boycott-checker.git',
-                    credentialsId: 'right'  // Use your GitHub PAT credential ID
+                    credentialsId: 'right'  // Use youhr GitHub PAT credential ID
             }
         }
 
