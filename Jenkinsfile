@@ -37,7 +37,7 @@ pipeline {
                         sh 'echo "${dockerhubpwd}" | docker login -u poldiro --password-stdin'
                         
                         // Build image with Jenkins build number
-                        sh 'docker build -t poldiro/consume-safe:${BUILD_NUMBER} .'
+                        sh 'docker build -t consume-safe:${BUILD_NUMBER} .'
                         
                         // Push image to DockerHub
                         sh 'docker push poldiro/consume-safe:${BUILD_NUMBER}'
