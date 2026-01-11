@@ -3,11 +3,12 @@ kind: Service
 metadata:
   name: consumesafe-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: consumesafe
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
+      nodePort: 8069
 
