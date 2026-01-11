@@ -1,59 +1,105 @@
 # ConsumeSafe
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.17.
+An Angular web application for checking boycotted products. Built with Angular 19, featuring SSR, Docker containerization, Kubernetes deployment, and Jenkins CI/CD.
 
-## Development server
+## Prerequisites
 
-To start a local develophment server, run:
+- **Node.js** (v18+): [Download](https://nodejs.org/)
+- **npm** (comes with Node.js)
+- **Angular CLI**: `npm install -g @angular/cli`
+- **Docker** (for containerization)
+- **Kubernetes** (for orchestration, e.g., Minikube)
+- **Jenkins** (for CI/CD, optional for local development)
 
+## Installation
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/ayoub8rouine/boycott-checker.git
+   cd boycott-checker
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+## Running Locally
+
+### Development Server
 ```bash
-ng serve
-```h
+npm start
+```
+- Opens at `http://localhost:4200`
+- Auto-reloads on changes.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+### Build for Production
 ```bash
-ng generate component component-name
+npm run build
+```
+- Artifacts in `dist/`
+
+### Run Tests
+```bash
+npm test
+```
+- Uses Karma with headless Chrome.
+
+## Docker
+
+### Build Image
+```bash
+docker build -t consume-safe:latest .
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+### Run Container
 ```bash
-ng generate --help
+docker run -p 8080:80 consume-safe:latest
 ```
+- Access at `http://localhost:8080`
 
-## Building
+## Kubernetes
 
-To build the project run:
+### Deploy Locally
+1. Ensure K8s cluster (e.g., Minikube) is running.
+2. Build and load image: `docker build -t consume-safe:latest . && minikube image load consume-safe:latest`
+3. Apply manifests: `kubectl apply -f k8s/`
+4. Check: `kubectl get pods,services`
 
-```bash
-ng build
-```
+### Access
+- Via Ingress or `minikube service consume-safe`
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## CI/CD with Jenkins
 
-## Running unit tests
+The project includes a `Jenkinsfile` for automated pipelines.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Setup
+1. Create a Jenkins Pipeline job pointing to this repo.
+2. Add credentials:
+   - GitHub PAT (ID: `right`)
+   - DockerHub token (ID: `dokcer-paswd`)
+   - K8s kubeconfig (ID: `kube-configfile`)
+3. Enable GitHub webhooks for push detection.
+4. On push, Jenkins builds, tests, pushes Docker image, and deploys to K8s.
 
-```bash
-ng test
-```
+### Manual Trigger
+- Build the job manually in Jenkins.
 
-## Running end-to-end tests
+## Project Structure
 
-For end-to-end (e2e) testing, run:
+- `src/app/`: Angular components
+- `k8s/`: Kubernetes manifests
+- `playbooks/`: Ansible scripts (legacy)
+- `Jenkinsfile`: CI/CD pipeline
+- `Dockerfile`: Container build
 
-```bash
-ng e2e
-```
+## Contributing
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+1. Fork the repo.
+2. Create a feature branch.
+3. Commit changes.
+4. Push and create a PR.
 
-## Additional Resources
+## License
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+MIT License.
