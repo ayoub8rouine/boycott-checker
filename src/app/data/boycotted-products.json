@@ -79,6 +79,36 @@
       "name": "Estée Lauder",
       "reason": "Invests in Israeli companies and has pro-Israel stance",
       "alternatives": ["Local beauty brands", "Cruelty-free brands", "DIY cosmetics", "Ethical beauty products"]
+    },
+    {
+      "name": "Cola",
+      "reason": "Not boycotted - generic product",
+      "alternatives": []
+    },
+    {
+      "name": "Apple",
+      "reason": "Not boycotted - generic fruit",
+      "alternatives": []
+    },
+    {
+      "name": "Tunisian Cola",
+      "reason": "Not boycotted - local product",
+      "alternatives": []
+    },
+    {
+      "name": "Coca Cola",
+      "reason": "Supporting Israeli economy",
+      "alternatives": ["Boga Cola", "Cristal Cola", "Local Tunisian sodas", "Zamzam beverages"]
+    },
+    {
+      "name": "Starbucks",
+      "reason": "Sued union for supporting Palestine and has pro-Israel stance",
+      "alternatives": ["Local Tunisian coffee shops", "Arabic coffee", "Turkish coffee", "Fair trade Tunisian coffee"]
+    },
+    {
+      "name": "McDonald's",
+      "reason": "Israeli franchise provided free meals to Israeli military during conflicts",
+      "alternatives": ["Local Tunisian burger joints", "Shawarma restaurants", "Falafel shops", "Home-cooked Tunisian meals"]
     }
   ]
 }
