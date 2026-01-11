@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: consumesafe
+  name: boycottchecker
   labels:
-    app: consumesafe
+    app: boycottchecker
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: consumesafe
+      app: boycottchecker
   template:
     metadata:
       labels:
-        app: consumesafe
+        app: boycottchecker
     spec:
       containers:
         - name: consumesafe
