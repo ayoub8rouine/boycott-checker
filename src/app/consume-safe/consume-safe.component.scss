@@ -1,110 +1,138 @@
 .container {
-  max-width: 600px;
+  max-width: 700px;
   margin: 50px auto;
   padding: 20px;
-  margin-top: 150px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .header {
   text-align: center;
   margin-bottom: 40px;
+  color: white;
 }
 
 .header h1 {
-  color: #1e3a8a;
-  font-size: 2.5em;
+  color: #ffffff;
+  font-size: 3em;
   margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  font-weight: bold;
 }
 
 .slogan {
-  font-size: 1.2em;
-  color: #555;
+  font-size: 1.3em;
+  color: #e0e7ff;
   line-height: 1.6;
+  font-weight: 300;
 }
 
 .sub-slogan {
-  font-size: 0.9em;
-  color: #777;
+  font-size: 1em;
+  color: #c7d2fe;
   font-style: italic;
 }
 
 .search-section {
-  background: #e0f2fe;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
 }
 
 .search-box {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 15px;
+  margin-bottom: 30px;
+  align-items: center;
 }
 
 .search-input {
   flex: 1;
-  padding: 12px 15px;
-  font-size: 16px;
+  padding: 15px 20px;
+  font-size: 18px;
   border: 2px solid #ddd;
-  border-radius: 5px;
+  border-radius: 50px;
   outline: none;
-  transition: border-color 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .search-input:focus {
   border-color: #1e3a8a;
+  box-shadow: 0 0 10px rgba(30, 58, 138, 0.3);
+  transform: scale(1.02);
 }
 
 .search-button {
-  padding: 12px 30px;
-  background: #1e3a8a;
+  padding: 15px 40px;
+  background: linear-gradient(45deg, #1e3a8a, #3b82f6);
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
 }
 
 .search-button:hover {
-  background: #1d4ed8;
+  background: linear-gradient(45deg, #1d4ed8, #2563eb);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
 }
 
 .result-box {
-  margin-top: 20px;
+  margin-top: 30px;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .result-message {
-  padding: 15px;
-  border-radius: 5px;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 18px;
   font-weight: bold;
-  margin-bottom: 15px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .boycotted {
-  background: #ffebee;
-  color: #c62828;
-  border-left: 4px solid #c62828;
+  background: linear-gradient(45deg, #dc2626, #ef4444);
+  color: white;
 }
 
 .safe {
-  background: #e8f5e9;
-  color: #2e7d32;
-  border-left: 4px solid #2e7d32;
+  background: linear-gradient(45deg, #16a34a, #22c55e);
+  color: white;
 }
 
 .alternatives {
-  background: white;
+  background: #f8fafc;
   padding: 20px;
-  border-radius: 5px;
-  border: 2px solid #4caf50;
+  border-radius: 10px;
+  border-left: 5px solid #1e3a8a;
 }
 
 .alternatives h3 {
-  color: #2e7d32;
-  margin-top: 0;
+  color: #1e3a8a;
   margin-bottom: 15px;
+  font-size: 20px;
 }
 
 .alternatives ul {
@@ -113,9 +141,18 @@
 }
 
 .alternatives li {
-  padding: 8px;
-  margin: 5px 0;
-  background: #f1f8f4;
-  border-radius: 3px;
-  color: #1b5e20;
+  padding: 8px 0;
+  border-bottom: 1px solid #e2e8f0;
+  color: #374151;
+  font-size: 16px;
+}
+
+.alternatives li:last-child {
+  border-bottom: none;
+}
+
+.alternatives li:before {
+  content: "✓ ";
+  color: #16a34a;
+  font-weight: bold;
 }
